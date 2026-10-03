@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+html { -webkit-text-size-adjust: 100%; }
+body {
+  @apply bg-slate-50 text-slate-800 antialiased;
+  -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden;
+}
+
+@layer components {
+  .card { @apply bg-white rounded-2xl border border-slate-200/80 shadow-sm; }
+  .label { @apply block mb-1.5 text-xs font-semibold uppercase tracking-wide text-slate-500; }
+  .input {
+    @apply w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-base text-slate-900
+      outline-none transition placeholder:text-slate-400
+      focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/15 sm:text-sm;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold
+      transition active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50;
+  }
+  .btn-sm { @apply px-3 py-1.5 text-xs; }
+  .btn-primary {
+    @apply bg-linear-to-r from-indigo-600 to-violet-600 text-white shadow-md shadow-indigo-600/25
+      hover:from-indigo-500 hover:to-violet-500;
+  }
+  .btn-ghost { @apply border border-slate-300 bg-white text-slate-700 hover:bg-slate-50; }
+  .chip {
+    @apply inline-flex items-center whitespace-nowrap rounded-full border border-slate-200 bg-white
+      px-3.5 py-1.5 text-sm font-medium text-slate-600 transition hover:bg-slate-50;
+  }
+  .chip-active { @apply border-indigo-600 bg-indigo-600 text-white hover:bg-indigo-600; }
+  .badge { @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold; }
+}
+
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+@keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.rise { animation: rise 0.35s ease-out both; }
+@keyframes sheet { from { transform: translateY(100%); } to { transform: none; } }
+.sheet-in { animation: sheet 0.25s ease-out both; }
+
+@media print { body { background: white; } }
